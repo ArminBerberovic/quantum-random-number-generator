@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RetrieverFunction", "RetrieverFunction.csproj", "{139E36BE-9DAD-4F1F-AB8D-4F25FC006DAF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{139E36BE-9DAD-4F1F-AB8D-4F25FC006DAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{139E36BE-9DAD-4F1F-AB8D-4F25FC006DAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{139E36BE-9DAD-4F1F-AB8D-4F25FC006DAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{139E36BE-9DAD-4F1F-AB8D-4F25FC006DAF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E391F2FF-EACC-4DC8-AC20-AFE3840D633F}
+	EndGlobalSection
+EndGlobal
