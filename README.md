@@ -1,2 +1,6 @@
 # quantum-random-number-generator
-This reposistory contains a random number generator that is integrated in Azure and runs on a real quantum computer from Ionq
+This reposistory contains a random number generator that is integrated in Azure and runs on a real quantum computer from Ionq. 
+
+Due to a recent change to Azure Quantum, the 'microsoft.ionq-ir.v3' format is not supported anymore. Unfortunately, the Quantum SDK for C# makes use of that format to submit quantum circuits. To better support future updates, this QRNG is switching from C# to Python. 
+
+The original C# is still available in the QRNG v1.0.0 release. 

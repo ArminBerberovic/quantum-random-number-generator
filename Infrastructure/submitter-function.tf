@@ -7,8 +7,8 @@ resource "azurerm_service_plan" "submitter-function" {
   name                = "${var.submitter_func_name}-app-service-plan"
   resource_group_name = azurerm_resource_group.submitter-function.name
   location            = azurerm_resource_group.submitter-function.location
-  os_type             = "Windows"
-  sku_name            = "Y1"
+  os_type             = "Linux"
+  sku_name            = "EP1"
 }
 
 resource "azurerm_storage_account" "submitter-function" {
@@ -22,10 +22,10 @@ resource "azurerm_storage_account" "submitter-function" {
 resource "azurerm_role_assignment" "sb-func-access-storage" {
   scope                 = azurerm_storage_account.submitter-function.id
   role_definition_name  = "Storage Blob Data Contributor"
-  principal_id          = azurerm_windows_function_app.submitter-function.identity[0].principal_id
+  principal_id          = azurerm_linux_function_app.submitter-function.identity[0].principal_id
 }
 
-resource "azurerm_windows_function_app" "submitter-function" {
+resource "azurerm_linux_function_app" "submitter-function" {
   name                = "${var.submitter_func_name}-app"
   resource_group_name = azurerm_resource_group.submitter-function.name
   location            = azurerm_resource_group.submitter-function.location
@@ -46,11 +46,9 @@ resource "azurerm_windows_function_app" "submitter-function" {
   "target"            = var.target
   }
   
-  site_config {
+  site_config { 
     application_stack {
-      dotnet_version = "v8.0" 
-      use_dotnet_isolated_runtime = true
+      python_version = "3.11"
     }
-	use_32_bit_worker = false 
   }
 }
