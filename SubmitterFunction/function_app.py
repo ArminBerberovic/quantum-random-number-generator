@@ -37,4 +37,4 @@ def generateRandomBits(req: func.HttpRequest) -> func.HttpResponse:
     # submit job
     job = MyTarget.submit(MyProgram, "RandomNumberCreation", shots=500)
 
-    return func.HttpResponse(f"Hello, the job-id is: {job.id}.")
+    return func.HttpResponse(f"Hello, the job-id is: {job.id}")
