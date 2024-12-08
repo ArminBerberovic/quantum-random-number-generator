@@ -14,7 +14,7 @@ resource "azurerm_storage_account" "quantum-machine" {
 resource "azurerm_role_assignment" "read-jobs" {
   scope                 = azurerm_storage_account.quantum-machine.id
   role_definition_name  = "Storage Blob Data Reader"
-  principal_id          = azurerm_windows_function_app.retriever-function.identity[0].principal_id
+  principal_id          = azurerm_linux_function_app.retriever-function.identity[0].principal_id
 }
 
 resource "azurerm_role_assignment" "ws-access-storage" {
@@ -26,13 +26,13 @@ resource "azurerm_role_assignment" "ws-access-storage" {
 resource "azurerm_role_assignment" "retriever-access-quantum-machine" {
   scope                 = azapi_resource.quantum-machine.id
   role_definition_name  = "Contributor"
-  principal_id          = azurerm_windows_function_app.retriever-function.identity[0].principal_id
+  principal_id          = azurerm_linux_function_app.retriever-function.identity[0].principal_id
 }
 
 resource "azurerm_role_assignment" "submitter-access-quantum-machine" {
   scope                 = azapi_resource.quantum-machine.id
   role_definition_name  = "Contributor"
-  principal_id          = azurerm_windows_function_app.submitter-function.identity[0].principal_id
+  principal_id          = azurerm_linux_function_app.submitter-function.identity[0].principal_id
 }
 
 

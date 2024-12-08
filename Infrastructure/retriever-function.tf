@@ -7,8 +7,8 @@ resource "azurerm_service_plan" "retriever-function" {
   name                = "${var.retriever_func_name}-app-service-plan"
   resource_group_name = azurerm_resource_group.retriever-function.name
   location            = azurerm_resource_group.retriever-function.location
-  os_type             = "Windows"
-  sku_name            = "Y1"
+  os_type             = "Linux"
+  sku_name            = "EP1"
 }
 
 resource "azurerm_storage_account" "retriever-function" {
@@ -22,10 +22,10 @@ resource "azurerm_storage_account" "retriever-function" {
 resource "azurerm_role_assignment" "rt-func-access-storage" {
   scope                 = azurerm_storage_account.retriever-function.id
   role_definition_name  = "Storage Blob Data Contributor"
-  principal_id          = azurerm_windows_function_app.retriever-function.identity[0].principal_id
+  principal_id          = azurerm_linux_function_app.retriever-function.identity[0].principal_id
 }
 
-resource "azurerm_windows_function_app" "retriever-function" {
+resource "azurerm_linux_function_app" "retriever-function" {
   name                = "${var.retriever_func_name}-app"
   resource_group_name = azurerm_resource_group.retriever-function.name
   location            = azurerm_resource_group.retriever-function.location
@@ -48,9 +48,7 @@ resource "azurerm_windows_function_app" "retriever-function" {
   
   site_config {
     application_stack {
-      dotnet_version = "v8.0" 
-      use_dotnet_isolated_runtime = true
+      python_version = "3.11"
     }
-	  use_32_bit_worker = false
   }
 }
